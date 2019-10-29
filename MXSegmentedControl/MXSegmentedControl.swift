@@ -250,7 +250,9 @@ open class MXSegmentedControl: UIControl {
             frame.size.width = current.frame.size.width * (CGFloat(contentView.segments.count) - progress)
         }
         
-        indicator.frame = CGRect(x: frame.origin.x + segmentEdgeInsets.left, y: frame.origin.y, width: current.titleLabel?.frame.width ?? 0, height: frame.size.height)
+//        indicator.frame = CGRect(x: frame.origin.x + segmentEdgeInsets.left, y: frame.origin.y, width: current.titleLabel?.frame.width ?? 0, height: frame.size.height)
+        indicator.frame = CGRect(x: frame.origin.x + current.padding, y: frame.origin.y, width: current.titleLabel?.frame.width ?? 0, height: frame.size.height)
+
         
         _scrollView.scrollRectToVisible(frame, animated: !frame.intersects(_scrollView.bounds))
     }
