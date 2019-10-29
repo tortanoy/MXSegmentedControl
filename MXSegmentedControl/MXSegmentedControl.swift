@@ -251,10 +251,26 @@ open class MXSegmentedControl: UIControl {
         }
         
 //        indicator.frame = CGRect(x: frame.origin.x + segmentEdgeInsets.left, y: frame.origin.y, width: current.titleLabel?.frame.width ?? 0, height: frame.size.height)
-        indicator.frame = CGRect(x: frame.origin.x + current.padding, y: frame.origin.y, width: current.titleLabel?.frame.width ?? 0, height: frame.size.height)
+        
+        let segmentItemWidth = current.frame.width
+        print("segmentItemWidth \(segmentItemWidth)")
+        
+        let labelWidth = current.titleLabel?.frame.width ?? 0
+        print("labelWidth \(labelWidth)")
+        
+        let locationX = ceil(segmentItemWidth) - labelWidth
+        print("locationX \(locationX)")
+        
+        //indicator.frame = CGRect(x: frame.origin.x + locationX, y: frame.origin.y, width: current.titleLabel?.frame.width ?? 0, height: frame.size.height)
+        
+        print("frame \(frame)")
+        
+        indicator.frame = CGRect(x: frame.origin.x + (locationX / 2), y: frame.origin.y, width: current.titleLabel?.frame.width ?? 0, height: frame.size.height)
 
         
         _scrollView.scrollRectToVisible(frame, animated: !frame.intersects(_scrollView.bounds))
+
+        
     }
     
     /// :nodoc:
